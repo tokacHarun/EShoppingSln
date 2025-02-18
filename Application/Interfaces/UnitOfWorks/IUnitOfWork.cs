@@ -5,9 +5,10 @@ namespace Application.Interfaces.UnitOfWorks
 {
     public interface IUnitOfWork : IAsyncDisposable
     {
+        
         IReadRepostory<T> GetReadRepostory<T>() where T : class, IBaseEntity, new();
         IWriteRepository<T> GetWriteRepository<T>() where T : class, IBaseEntity, new();
-        void OpenTransaction();
+        void OpenTransactionAsync();
         Task<int> SaveAsync();
         Task CommitAsync();
         void RollBack();
